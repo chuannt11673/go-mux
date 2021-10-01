@@ -17,5 +17,8 @@ func main() {
 	r.HandleFunc("/api/todo/{id}", handler.UpdateTodo).Methods(http.MethodPut)
 	r.HandleFunc("/api/todo/{id}", handler.DeleteTodo).Methods(http.MethodDelete)
 
+	r.HandleFunc("/api/todo-sql/check", handler.CheckConn).Methods(http.MethodGet)
+	r.HandleFunc("/api/todo-sql", handler.GetTodosSql).Methods(http.MethodGet)
+
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
