@@ -4,6 +4,4 @@
 .vs/
 obj/
 bin/
-App_Data/Logs/
-App_Data/Logs/
-Logs/Logs.txt
+Logs/
