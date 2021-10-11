@@ -1,5 +1,7 @@
 <script>
+import QuestionChoices from '@/src/components/question-choices.vue'
 export default {
+  components: { QuestionChoices },
   data() {
     return {
       loading: false,
@@ -26,7 +28,6 @@ export default {
           {
             questionId: 1,
             text: 'What kind of food do you like?',
-            choiceId: 1,
             choices: [
               {
                 choiceId: 1,
@@ -64,47 +65,8 @@ export default {
       {{ error }}
     </div>
 
-    <div v-for="(question, qidx) in questions" :key="qidx" class="question">
-      <div class="text">
-        {{ question.text }}
-      </div>
-      <div
-        v-for="(choice, cidx) in question.choices"
-        :key="cidx"
-        class="choices"
-      >
-        <div class="choice">
-          <input
-            v-model="question.choiceId"
-            :value="choice.choiceId"
-            type="radio"
-          />
-          <label>{{ choice.text }}</label
-          ><br />
-        </div>
-      </div>
+    <div v-for="(question, idx) in questions" :key="idx">
+      <QuestionChoices :question="question" />
     </div>
   </div>
 </template>
-
-<style lang="scss">
-@import '@design';
-div.text {
-  padding: 20px 0;
-}
-.questions {
-  .question {
-  }
-}
-.choices {
-  .choice {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    label {
-      margin-left: 10px;
-    }
-  }
-}
-</style>
